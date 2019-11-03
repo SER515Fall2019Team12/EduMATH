@@ -15,4 +15,7 @@ npm start
 ```
 
 ## To setup local dB:
-Install mySQL server, and enter the `user` and `password` credentials of the dB in the routes file connection block. 
+Install mySQL server, and enter the `user` and `password` credentials of the dB in the routes file connection block.
+
+Then run command:
+`node server.js`
