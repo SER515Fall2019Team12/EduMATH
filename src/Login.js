@@ -7,8 +7,8 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 var apiBaseUrl = "http://localhost:4000/api/";
 import axios from 'axios';
-import UploadPage from './UploadPage';
 import Landing from './Landing';
+import AppDragDropDemo from './AppDragDropDemo';
 class Login extends Component {
   constructor(props){
     super(props);
@@ -108,7 +108,7 @@ class Login extends Component {
      if(response.data.code == 200){
        console.log("Login successfull");
        var uploadScreen=[];
-       uploadScreen.push(<Landing appContext={self.props.appContext} role={self.state.loginRole} name={self.state.username}/>)
+       uploadScreen.push(<AppDragDropDemo appContext={self.props.appContext} role={self.state.loginRole} name={self.state.username}/>)
        self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})
      }
      else if(response.data.code == 204){
