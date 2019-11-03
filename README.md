@@ -3,16 +3,14 @@ This application helps people understand and form valid mathematical expressions
 
 ## To run the program:
 
-Once in the root folder run the following commands:
-```
-npm install
-```
 Go in the `backend` folder:
 ```
 npm install
 ```
-Go in the `root` folder:
+Once in the `root` folder run the following commands:
 ```
+npm install
+
 npm start
 ```
 
