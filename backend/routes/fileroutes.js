@@ -1,6 +1,6 @@
 var fs = require("fs");
 var path = require('path');
-var writePath = '/home/saurabh/Documents/react/cloudprint/filestobeprinted/';
+var writePath = '/home/amit/Documents/react/cloudprint/filestobeprinted/';
 var cmd = require('node-cmd');
 var async = require('async');
 var jsonfile = require('jsonfile');
