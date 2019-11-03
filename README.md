@@ -13,6 +13,7 @@ npm install
 
 npm start
 ```
+This will host the app on `localhost:3000`
 
 ## To setup local dB:
 Install mySQL server, and enter the `user` and `password` credentials of the dB in the routes file connection block.
