@@ -55,5 +55,25 @@ export default class AppDragDropDemo extends Component {
         });
        
      }
+        //this function contains render features 
+        render() {
+            //tasks holds arrays of draggable objects according to positions
+            var tasks = {
+            wip: [],
+            complete: []
+        }
+            //For loop checks for object categories and creates array
+            this.state.tasks.forEach ((t) => {
+            tasks[t.category].push(
+                <div key={t.name} 
+                    onDragStart = {(e) => this.onDragStart(e, t.name)}
+                    draggable
+                    className="draggable"
+                    style = {{backgroundColor: t.bgcolor}}
+                >
+                    {t.name}
+                </div>
+            );
+        });
         
     }
