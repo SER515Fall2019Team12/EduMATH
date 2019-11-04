@@ -1,3 +1,11 @@
+/**
+ * Title:        EduMath
+ * Description:  SER515 Project
+ * Copyright:    Copyright (c) 2019
+ * Company:      Computer Software Engineering 
+ * @author Sajjan, Amit, Vaibhav, Shubham
+ * @version 1.0
+ */
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
