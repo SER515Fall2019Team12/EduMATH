@@ -62,7 +62,7 @@ export default class AppDragDropDemo extends Component {
             wip: [],
             complete: []
         }
-            
+            //For loop checks for object categories and creates array
             this.state.tasks.forEach ((t) => {
             tasks[t.category].push(
                 <div key={t.name} 
