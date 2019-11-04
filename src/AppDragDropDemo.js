@@ -84,5 +84,16 @@ export default class AppDragDropDemo extends Component {
                     <span className="task-header">OPERATORS</span>
                     {tasks.wip}
                 </div>
-        
+             <div className="droppable" 
+                    onDragOver={(e)=>this.onDragOver(e)}
+                    onDrop={(e)=>this.onDrop(e, "complete")}>
+                     <span className="task-header">SANDBOX</span>
+                     {tasks.complete}
+                </div>
+
+
+            </div>
+        );
     }
+        
+   }
