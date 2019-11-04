@@ -62,5 +62,18 @@ export default class AppDragDropDemo extends Component {
             wip: [],
             complete: []
         }
+            
+            this.state.tasks.forEach ((t) => {
+            tasks[t.category].push(
+                <div key={t.name} 
+                    onDragStart = {(e) => this.onDragStart(e, t.name)}
+                    draggable
+                    className="draggable"
+                    style = {{backgroundColor: t.bgcolor}}
+                >
+                    {t.name}
+                </div>
+            );
+        });
         
     }
