@@ -84,5 +84,26 @@ export default class AppDragDropDemo extends Component {
                 </div>
             );
         });
-        
+             //Return or display function for rendering function is implemented 
+             return (
+            <div className="container-drag">
+                <h2 className="header">EduMath</h2>
+                <div className="wip"
+                    onDragOver={(e)=>this.onDragOver(e)}
+                    onDrop={(e)=>{this.onDrop(e, "wip")}}>
+                    <span className="task-header">OPERATORS</span>
+                    {tasks.wip}
+                </div>
+             <div className="droppable" 
+                    onDragOver={(e)=>this.onDragOver(e)}
+                    onDrop={(e)=>this.onDrop(e, "complete")}>
+                     <span className="task-header">SANDBOX</span>
+                     {tasks.complete}
+                </div>
+
+
+            </div>
+        );
     }
+        
+   }
