@@ -75,5 +75,14 @@ export default class AppDragDropDemo extends Component {
                 </div>
             );
         });
+             return (
+            <div className="container-drag">
+                <h2 className="header">EduMath</h2>
+                <div className="wip"
+                    onDragOver={(e)=>this.onDragOver(e)}
+                    onDrop={(e)=>{this.onDrop(e, "wip")}}>
+                    <span className="task-header">OPERATORS</span>
+                    {tasks.wip}
+                </div>
         
     }
