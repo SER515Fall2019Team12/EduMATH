@@ -20,3 +20,4 @@ export default class AppDragDropDemo extends Component {
             {name:"0", category:"wip", bgcolor:"skyblue"},
           ]
     }
+    }
