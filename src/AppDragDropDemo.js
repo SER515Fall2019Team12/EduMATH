@@ -30,4 +30,8 @@ export default class AppDragDropDemo extends Component {
         ev.preventDefault();
     }
         
+        onDrop = (ev, cat) => {
+       
+     }
+        
     }
