@@ -1,3 +1,13 @@
+/**
+ * Title:        EduMath
+ * Description:  SER515 Project
+ * Copyright:    Copyright (c) 2019
+ * Company:      Computer Software Engineering 
+ * @author Sajjan, Amit, Vaibhav, Shubham
+ * @version 1.0
+ */
+
+
 <html>
    <head>
       <title> User login and registration </title>
