@@ -22,3 +22,9 @@
   width:100%;
 }
 
+.task-header {
+  display: inline-block;
+  background-color: skyblue;
+  width:100%;
+}
+
