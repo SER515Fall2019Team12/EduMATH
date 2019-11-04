@@ -9,4 +9,9 @@ import './App.css';
             {name:"5", category:"wip", bgcolor:"skyblue"},
             {name:"X", category:"wip", bgcolor:"yellow"},
             {name:"/", category:"wip", bgcolor:"yellow"},
+            {name:"+", category:"wip", bgcolor:"pink"},
+            {name:"-", category:"wip", bgcolor:"pink"},
+            {name:"6", category:"wip", bgcolor:"skyblue"},
+            {name:"7", category:"wip", bgcolor:"skyblue"},
+            {name:"8", category:"wip", bgcolor:"skyblue"},
             ]
