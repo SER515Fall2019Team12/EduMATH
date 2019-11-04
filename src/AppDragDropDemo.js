@@ -26,4 +26,8 @@ export default class AppDragDropDemo extends Component {
         ev.dataTransfer.setData("id", id);
     }
         
+        onDragOver = (ev) => {
+        ev.preventDefault();
+    }
+        
     }
