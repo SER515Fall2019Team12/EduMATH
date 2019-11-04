@@ -6,4 +6,7 @@ import './App.css';
             {name:"2", category:"wip", bgcolor:"skyblue"},
             {name:"3", category:"wip", bgcolor:"skyblue"},
             {name:"4", category:"wip", bgcolor:"skyblue"},
+            {name:"5", category:"wip", bgcolor:"skyblue"},
+            {name:"X", category:"wip", bgcolor:"yellow"},
+            {name:"/", category:"wip", bgcolor:"yellow"},
             ]
