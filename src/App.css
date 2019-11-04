@@ -13,3 +13,12 @@
   background-color: #EEEEEE;
   border-right: 1px dotted;
 }
+
+.header {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  background-color: #E0E0E0;
+  width:100%;
+}
+
