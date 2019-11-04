@@ -75,6 +75,7 @@ export default class AppDragDropDemo extends Component {
                 </div>
             );
         });
+             //Return or display function for rendering function is implemented 
              return (
             <div className="container-drag">
                 <h2 className="header">EduMath</h2>
