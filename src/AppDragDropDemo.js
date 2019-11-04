@@ -20,4 +20,10 @@ export default class AppDragDropDemo extends Component {
             {name:"0", category:"wip", bgcolor:"skyblue"},
           ]
     }
+    
+        onDragStart = (ev, id) => {
+        console.log('dragstart:',id);
+        ev.dataTransfer.setData("id", id);
+    }
+        
     }
