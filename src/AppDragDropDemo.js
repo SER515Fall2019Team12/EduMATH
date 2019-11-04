@@ -55,5 +55,10 @@ export default class AppDragDropDemo extends Component {
         });
        
      }
+        render() {
+        var tasks = {
+            wip: [],
+            complete: []
+        }
         
     }
