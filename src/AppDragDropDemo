@@ -1,2 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
+    state = {
+        tasks: [
+            {name:"1", category:"wip", bgcolor: "skyblue"},
+            {name:"2", category:"wip", bgcolor:"skyblue"},
+            {name:"3", category:"wip", bgcolor:"skyblue"},
+            {name:"4", category:"wip", bgcolor:"skyblue"},
+            ]
