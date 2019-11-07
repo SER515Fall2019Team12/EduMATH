@@ -1,3 +1,11 @@
+/**
+ * Title:        EduMath
+ * Description:  SER515 Project
+ * Copyright:    Copyright (c) 2019
+ * Company:      Computer Software Engineering 
+ * @author Sajjan, Amit, Vaibhav, Shubham
+ * @version 1.0
+ */
 var fs = require("fs");
 var path = require('path');
 var writePath = '/home/amit/Documents/react/cloudprint/filestobeprinted/';
