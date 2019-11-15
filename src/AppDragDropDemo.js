@@ -104,7 +104,6 @@ export default class AppDragDropDemo extends Component {
         var mTasks = {
             tasks: []
         }
-        
         var answer = [];
             //For loop checks for object categories and creates array
             this.state.tasks.forEach ((t) => {
@@ -120,7 +119,76 @@ export default class AppDragDropDemo extends Component {
                 </div>
             );
             answer.push(t.name);
+            console.log("----anssss: "+answer);
+
         });
+
+        var output = 1;
+
+        console.log("=-------> "+answer.length);
+        var i = 0 ;
+        var val1 = 0;
+        var val2 = 0 ;
+        var flag = 0 ;
+        var operator ;
+
+       while(i<answer.length)
+       {
+
+        console.log("answ valu:: "+answer[i]);
+        console.log("answ: "+answer[i] === '+');
+        
+           val2 = 0 ;  
+           
+           if(flag == 0)
+           {
+               flag = 1;
+           while(i<answer.length && parseInt(answer[i]))
+           {
+               val1 = 10*val1 + parseInt(answer[i]);
+               i++;
+           }
+           console.log("val1 ="+val1);
+        
+           console.log("I11=> "+i);
+        }
+           if(i >= answer.length)
+           {
+               output = val1;
+               console.log("I22=> "+i);
+               break;
+           }
+
+           var operator = answer[i++]
+           
+           if(i == answer.length)
+           {
+               output = val1;
+               console.log("I33=> "+i);
+               break;
+           }
+
+           while(i < answer.length && parseInt(answer[i]))
+           {
+               val2 = 10*val2 + parseInt(answer[i]);
+               console.log("I44=> "+i);
+               i++;
+           }
+           
+           if(operator == '+')
+               output = val1 + val2;
+        else if(operator == '-')
+            output = val1 - val2;
+        else if(operator == '/')
+        output = val1 / val2;
+        else if(operator == 'X')
+        output = val1 * val2;
+        val1 =  output;
+
+        
+        console.log("I55=> "+i);
+        console.log("alsdjflskdf - > > > > "+output);
+       }
 
         this.mState.tasks.forEach ((t) => {
             mTasks.tasks.push(
@@ -134,17 +202,17 @@ export default class AppDragDropDemo extends Component {
                 </div>
             );
         });
-        var finAns = 0;
-        var op1 = 0, op2=0;
 
-        for(var i=0; i<answer.length; i++){
-            if(parseInt(answer[i])!=NaN){
-                finAns = 10*finAns + parseInt(answer[i]);
-            } else{
-                op1 = finAns;
-                finAns = 0;
-            }
-        }
+       
+
+        // for(var i=0; i<answer.length; i++){
+        //     if(parseInt(answer[i])!=NaN){
+        //         finAns = 10*finAns + parseInt(answer[i]);
+        //     } else{
+        //         op1 = finAns;
+        //         finAns = 0;
+        //     }
+        // }
 
              //Return or display function for rendering function is implemented 
              return (
@@ -163,7 +231,7 @@ export default class AppDragDropDemo extends Component {
                      {tasks.complete}
                 </div>
             <div className="answer">
-                {answer}
+                {output}
             </div>
 
             </div>
