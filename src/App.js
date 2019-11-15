@@ -8,7 +8,7 @@
  */
 import React, { Component } from 'react';
 import './App.css';
-import LoginScreen from './Loginscreen';
+import AppDragDropDemo from './AppDragDropDemo';
 class App extends Component {
   constructor(props){
     super(props);
@@ -19,14 +19,12 @@ class App extends Component {
   }
   componentWillMount(){
     var loginPage =[];
-    loginPage.push(<LoginScreen appContext={this} key={"login-screen"}/>);
-    this.setState({
-                  loginPage:loginPage
-                    })
+    loginPage.push(<AppDragDropDemo appContext={this} key={"appdragdropdemo"}/>);
+
   }
   render() {
     return (
-      <div className="App">
+      <div className="AppDragDropDemo">
         {this.state.loginPage}
         {this.state.uploadScreen}
       </div>
