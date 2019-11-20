@@ -122,67 +122,65 @@ export default class AppDragDropDemo extends Component {
         });
 
         var outputValue ;
-        var i = 0 ;
-        var val1 = 0;
-        var val2 = 0 ;
-        var flag = 0 ;
-        var operator ;
-        console.log("answer =" + answer);
-       while(i<answer.length)
+        var currentIndex = 0 ;
+        var operandFirst = 0;
+        var operandSecond = 0 ;
+        var isFirstCalculated = 0 ;
+        var mathematicalOperator ;
+       while(currentIndex<answer.length)
        {
-           val2 = 0 ;  
-           if(flag == 0)
+           operandSecond = 0 ;  
+           if(isFirstCalculated == 0)
            {
-                    flag = 1;
-                    while(i<answer.length && answer[i] >= '0' && answer[i] <= '9')
+                    isFirstCalculated = 1;
+                    while(currentIndex<answer.length && answer[currentIndex] >= '0' && answer[currentIndex] <= '9')
                         {
-                            val1 = 10*val1 + parseInt(answer[i]);
-                            i++;
+                            operandFirst = 10*operandFirst + parseInt(answer[currentIndex]);
+                            currentIndex++;
                         }
            }
-           console.log("val1 ="+val1);
-           if(i >= answer.length)
+           if(currentIndex >= answer.length)
            {
-               outputValue = val1;
+               outputValue = operandFirst;
                break;
            }
 
-           var operator = answer[i++]
-           if(answer[i] < '0' || answer[i] > '9')
+           var mathematicalOperator = answer[currentIndex++]
+           if(answer[currentIndex] < '0' || answer[currentIndex] > '9')
            {
                alert("You can not use two operator together\n Please bring it back to its original place !!!");
            }
-           if(i == answer.length)
+           if(currentIndex == answer.length)
            {
-               outputValue = val1;
+               outputValue = operandFirst;
                break;
            }
 
-            while(i < answer.length && answer[i] >= '0' && answer[i] <= '9')
+            while(currentIndex < answer.length && answer[currentIndex] >= '0' && answer[currentIndex] <= '9')
             {
-               val2 = 10*val2 + parseInt(answer[i]);
-               i++;
+               operandSecond = 10*operandSecond + parseInt(answer[currentIndex]);
+               currentIndex++;
             }
-            if(operator == '+')
+            if(mathematicalOperator == '+')
             {
-               outputValue = val1 + val2;
+               outputValue = operandFirst + operandSecond;
             }
-            else if(operator == '-')
+            else if(mathematicalOperator == '-')
             {
-            outputValue = val1 - val2;
+            outputValue = operandFirst - operandSecond;
             }
-            else if(operator == '/')
+            else if(mathematicalOperator == '/')
             {
-            if(val2 == 0)
+            if(operandSecond == 0)
             alert("Can not divide by zero. Undefine !!!");
             else 
-            outputValue = val1 / val2;
+            outputValue = operandFirst / operandSecond;
             }
-            else if(operator == 'X')
+            else if(mathematicalOperator == 'X')
             {
-            outputValue = val1 * val2;
+            outputValue = operandFirst * operandSecond;
             }
-            val1 =  outputValue;
+            operandFirst =  outputValue;
        }
 
         this.mState.tasks.forEach ((t) => {
