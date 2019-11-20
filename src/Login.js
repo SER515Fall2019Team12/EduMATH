@@ -188,15 +188,15 @@ class Login extends Component {
   }
   render() {
     return (
-      <div className='sajjan'>
+      <div className='indexL'>
         <MuiThemeProvider>
         <AppBar
-             title="Login"
+             title="EDUMath! Learn maths in fun way"
            />
         </MuiThemeProvider>
         <MuiThemeProvider>
         <div>
-        <p>Login as:</p>
+        <p>Role: </p>
         <DropDownMenu value={this.state.menuValue} onChange={(event,index,value)=>this.handleMenuChange(value)}>
           <MenuItem value={1} primaryText="Student" />
           <MenuItem value={2} primaryText="Teacher" />

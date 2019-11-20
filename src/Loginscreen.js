@@ -49,7 +49,7 @@ class Loginscreen extends Component {
   componentWillMount(){
     var loginscreen=[];
     loginscreen.push(<Login parentContext={this} appContext={this.props.appContext} key={"LoginScreen"}/>);
-    var loginmessage = "Not registered yet, Register Now";
+    var loginmessage = "Not registered yet? Register Now!";
     this.setState({
                   loginscreen:loginscreen,
                   loginmessage:loginmessage
@@ -96,7 +96,7 @@ class Loginscreen extends Component {
         </div>
       )
       loginscreen.push(<Login parentContext={this} appContext={this.props.appContext} role={userRole}/>);
-      loginmessage = "Not Registered yet.Go to registration";
+      loginmessage = "Not Registered yet? Go to registration!";
       this.setState({
                      loginscreen:loginscreen,
                      loginmessage:loginmessage,
@@ -109,7 +109,7 @@ class Loginscreen extends Component {
     return (
       <div className="loginscreen" key="loginscreen">
         {this.state.loginscreen}
-        <div>
+        <div className="indexLend">
           {this.state.loginmessage}
           {this.state.loginButtons}
         </div>
