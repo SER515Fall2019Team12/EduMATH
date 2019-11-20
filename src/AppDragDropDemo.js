@@ -150,6 +150,10 @@ export default class AppDragDropDemo extends Component {
            }
 
            var operator = answer[i++]
+           if(answer[i] < '0' || answer[i] > '9')
+           {
+               alert("You can not use two operator together");
+           }
            if(i == answer.length)
            {
                output = val1;
