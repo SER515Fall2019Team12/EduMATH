@@ -16,6 +16,6 @@ import Login from './Login';
 import Loginscreen from './Loginscreen';
  
 ReactDOM.render(
-  <Loginscreen />,
+  <App />,
   document.getElementById('root')
 );
