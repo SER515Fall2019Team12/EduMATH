@@ -13,7 +13,6 @@ import './App.css';
 export default class AppDragDropDemo extends Component {
     
     global = 0;
-
     mState = {
         tasks: [
             {name:"1", category:"wip", bgcolor: "skyblue"},
@@ -123,34 +122,35 @@ export default class AppDragDropDemo extends Component {
 
         });
 
-        var output = 1;
+        var output ;
 
-        console.log("=-------> "+answer.length);
+       // console.log("=-------> "+answer.length);
         var i = 0 ;
         var val1 = 0;
         var val2 = 0 ;
         var flag = 0 ;
         var operator ;
-
+        console.log("answer =" + answer);
        while(i<answer.length)
        {
 
-        console.log("answ valu:: "+answer[i]);
-        console.log("answ: "+answer[i] === '+');
+        // console.log("answ valu:: "+answer[i]);
+        // console.log("answ: "+answer[i] === '+');
         
            val2 = 0 ;  
            
            if(flag == 0)
            {
                     flag = 1;
-                    while(i<answer.length && parseInt(answer[i]))
+                    while(i<answer.length && answer[i] >= '0' && answer[i] <= '9')
                         {
                             val1 = 10*val1 + parseInt(answer[i]);
                             i++;
                         }
-                    console.log("val1 ="+val1);
-                    console.log("I11=> "+i);
+                    // console.log("val1 ="+val1);
+                    // console.log("I11=> "+i);
            }
+           console.log("val1 ="+val1);
            if(i >= answer.length)
            {
                output = val1;
@@ -163,14 +163,14 @@ export default class AppDragDropDemo extends Component {
            if(i == answer.length)
            {
                output = val1;
-               console.log("I33=> "+i);
+            //    console.log("I33=> "+i);
                break;
            }
 
-           while(i < answer.length && parseInt(answer[i]))
+           while(i < answer.length && answer[i] >= '0' && answer[i] <= '9')
            {
                val2 = 10*val2 + parseInt(answer[i]);
-               console.log("I44=> "+i);
+            //    console.log("I44=> "+i);
                i++;
            }
            
@@ -194,10 +194,11 @@ export default class AppDragDropDemo extends Component {
         output = val1 * val2;
         }
         val1 =  output;
+        console.log("")
 
         
-        console.log("I55=> "+i);
-        console.log("alsdjflskdf - > > > > "+output);
+        // console.log("I55=> "+i);
+        // console.log("alsdjflskdf - > > > > "+output);
        }
 
         this.mState.tasks.forEach ((t) => {
@@ -243,7 +244,6 @@ export default class AppDragDropDemo extends Component {
             <div className="answer">
                 {output}
             </div>
-
             </div>
         );
     }
