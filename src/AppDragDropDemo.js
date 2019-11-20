@@ -70,7 +70,7 @@ export default class AppDragDropDemo extends Component {
         //     console.log(task);
         //     return task;
         // });
-            if(category == "wip"){
+            if(category === "wip"){
                 this.state.tasks.push({name:id,category:"complete", bgcolor: "yellow", pId:this.global});
                 this.global++;
             }else{
@@ -176,13 +176,24 @@ export default class AppDragDropDemo extends Component {
            }
            
            if(operator == '+')
+           {
                output = val1 + val2;
+           }
         else if(operator == '-')
+        {
             output = val1 - val2;
+        }
         else if(operator == '/')
+        {
+        if(val2 == 0)
+        alert("Can not divide by zero. Undefine !!!");
+        else 
         output = val1 / val2;
+        }
         else if(operator == 'X')
+        {
         output = val1 * val2;
+        }
         val1 =  output;
 
         
