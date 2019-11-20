@@ -127,6 +127,13 @@ export default class AppDragDropDemo extends Component {
         var operandSecond = 0 ;
         var isFirstCalculated = 0 ;
         var mathematicalOperator ;
+
+       if(answer[answer.length-1] == '+'  || answer[answer.length-1] == '-' || answer[answer.length-1] == '/' || answer[answer.length-1] == 'X')
+       {
+           outputValue = "Invalid Formate"
+       } 
+       else 
+       {
        while(currentIndex<answer.length)
        {
            operandSecond = 0 ;  
@@ -182,6 +189,7 @@ export default class AppDragDropDemo extends Component {
             }
             operandFirst =  outputValue;
        }
+    }
 
         this.mState.tasks.forEach ((t) => {
             mTasks.tasks.push(
