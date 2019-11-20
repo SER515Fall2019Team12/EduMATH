@@ -70,7 +70,7 @@ export default class AppDragDropDemo extends Component {
         //     console.log(task);
         //     return task;
         // });
-            if(category === "wip"){
+            if(category == "wip"){
                 this.state.tasks.push({name:id,category:"complete", bgcolor: "yellow", pId:this.global});
                 this.global++;
             }else{
@@ -142,16 +142,15 @@ export default class AppDragDropDemo extends Component {
            
            if(flag == 0)
            {
-               flag = 1;
-           while(i<answer.length && parseInt(answer[i]))
-           {
-               val1 = 10*val1 + parseInt(answer[i]);
-               i++;
+                    flag = 1;
+                    while(i<answer.length && parseInt(answer[i]))
+                        {
+                            val1 = 10*val1 + parseInt(answer[i]);
+                            i++;
+                        }
+                    console.log("val1 ="+val1);
+                    console.log("I11=> "+i);
            }
-           console.log("val1 ="+val1);
-        
-           console.log("I11=> "+i);
-        }
            if(i >= answer.length)
            {
                output = val1;
