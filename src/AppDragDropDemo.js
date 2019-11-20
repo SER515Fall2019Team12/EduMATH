@@ -37,7 +37,6 @@ export default class AppDragDropDemo extends Component {
             
           ]
     }
-    
         onDragStart = (ev, id, cat, pId) => {
         console.log('dragstart:',id);
         ev.dataTransfer.setData("id", id);
@@ -122,7 +121,7 @@ export default class AppDragDropDemo extends Component {
 
         });
 
-        var output ;
+        var outputValue ;
         var i = 0 ;
         var val1 = 0;
         var val2 = 0 ;
@@ -144,53 +143,46 @@ export default class AppDragDropDemo extends Component {
            console.log("val1 ="+val1);
            if(i >= answer.length)
            {
-               output = val1;
-               console.log("I22=> "+i);
+               outputValue = val1;
                break;
            }
 
            var operator = answer[i++]
            if(answer[i] < '0' || answer[i] > '9')
            {
-               alert("You can not use two operator together");
+               alert("You can not use two operator together\n Please bring it back to its original place !!!");
            }
            if(i == answer.length)
            {
-               output = val1;
+               outputValue = val1;
                break;
            }
 
-           while(i < answer.length && answer[i] >= '0' && answer[i] <= '9')
-           {
+            while(i < answer.length && answer[i] >= '0' && answer[i] <= '9')
+            {
                val2 = 10*val2 + parseInt(answer[i]);
                i++;
-           }
-           
-           if(operator == '+')
-           {
-               output = val1 + val2;
-           }
-        else if(operator == '-')
-        {
-            output = val1 - val2;
-        }
-        else if(operator == '/')
-        {
-        if(val2 == 0)
-        alert("Can not divide by zero. Undefine !!!");
-        else 
-        output = val1 / val2;
-        }
-        else if(operator == 'X')
-        {
-        output = val1 * val2;
-        }
-        val1 =  output;
-        console.log("")
-
-        
-        // console.log("I55=> "+i);
-        // console.log("alsdjflskdf - > > > > "+output);
+            }
+            if(operator == '+')
+            {
+               outputValue = val1 + val2;
+            }
+            else if(operator == '-')
+            {
+            outputValue = val1 - val2;
+            }
+            else if(operator == '/')
+            {
+            if(val2 == 0)
+            alert("Can not divide by zero. Undefine !!!");
+            else 
+            outputValue = val1 / val2;
+            }
+            else if(operator == 'X')
+            {
+            outputValue = val1 * val2;
+            }
+            val1 =  outputValue;
        }
 
         this.mState.tasks.forEach ((t) => {
@@ -234,7 +226,7 @@ export default class AppDragDropDemo extends Component {
                      {tasks.complete}
                 </div>
             <div className="answer">
-                {output}
+                {outputValue}
             </div>
             </div>
         );
