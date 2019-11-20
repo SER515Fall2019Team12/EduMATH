@@ -123,8 +123,6 @@ export default class AppDragDropDemo extends Component {
         });
 
         var output ;
-
-       // console.log("=-------> "+answer.length);
         var i = 0 ;
         var val1 = 0;
         var val2 = 0 ;
@@ -133,12 +131,7 @@ export default class AppDragDropDemo extends Component {
         console.log("answer =" + answer);
        while(i<answer.length)
        {
-
-        // console.log("answ valu:: "+answer[i]);
-        // console.log("answ: "+answer[i] === '+');
-        
            val2 = 0 ;  
-           
            if(flag == 0)
            {
                     flag = 1;
@@ -147,8 +140,6 @@ export default class AppDragDropDemo extends Component {
                             val1 = 10*val1 + parseInt(answer[i]);
                             i++;
                         }
-                    // console.log("val1 ="+val1);
-                    // console.log("I11=> "+i);
            }
            console.log("val1 ="+val1);
            if(i >= answer.length)
@@ -159,18 +150,15 @@ export default class AppDragDropDemo extends Component {
            }
 
            var operator = answer[i++]
-           
            if(i == answer.length)
            {
                output = val1;
-            //    console.log("I33=> "+i);
                break;
            }
 
            while(i < answer.length && answer[i] >= '0' && answer[i] <= '9')
            {
                val2 = 10*val2 + parseInt(answer[i]);
-            //    console.log("I44=> "+i);
                i++;
            }
            
