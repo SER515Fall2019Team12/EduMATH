@@ -138,6 +138,8 @@ class Login extends Component {
    .then(function (response) {
      console.log(response);
      if(response.data.code == 200){
+
+        alert("User type is: "+role);
        console.log("Login successfull");
        var uploadScreen=[];
        uploadScreen.push(<Landing appContext={self.props.appContext} role={self.state.loginRole} name={self.state.username}/>)
