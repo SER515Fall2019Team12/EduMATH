@@ -16,6 +16,10 @@ import MenuItem from 'material-ui/MenuItem';
 var apiBaseUrl = "http://localhost:4000/api/";
 import axios from 'axios';
 import Landing from './Landing';
+import AppDragDropDemo from './AppDragDropDemo';
+import AppDragDropDemo1 from './AppDragDropDemo1';
+import AppDragDropDemo2 from './AppDragDropDemo2';
+
 class Login extends Component {
   constructor(props){
     super(props);
@@ -24,7 +28,7 @@ class Login extends Component {
       <MuiThemeProvider key={"theme"}>
         <div>
          <TextField
-           hintText="Enter your College Rollno"
+           hintText="Enter your Student Id"
            floatingLabelText="Student Id"
            onChange={(event,newValue) => this.setState({username:newValue})}
            />
@@ -58,7 +62,7 @@ class Login extends Component {
         <MuiThemeProvider>
           <div>
            <TextField
-             hintText="Enter your College Rollno"
+             hintText="Enter your Student Id"
              floatingLabelText="Student Id"
              onChange = {(event,newValue) => this.setState({username:newValue})}
              />
@@ -82,7 +86,7 @@ class Login extends Component {
         <MuiThemeProvider>
           <div>
            <TextField
-             hintText="Enter your College Rollno"
+             hintText="Enter your Student Id"
              floatingLabelText="Student Id"
              onChange = {(event,newValue) => this.setState({username:newValue})}
              />
@@ -107,7 +111,7 @@ class Login extends Component {
         <MuiThemeProvider>
           <div>
            <TextField
-             hintText="Enter your College Rollno"
+             hintText="Enter your Student Id"
              floatingLabelText="Teacher Id"
              onChange={(event,newValue) => this.setState({username:newValue})}
              />
@@ -138,12 +142,20 @@ class Login extends Component {
    .then(function (response) {
      console.log(response);
      if(response.data.code == 200){
+      var uploadScreen=[];
 
-        alert("User type is: "+role);
+        if(role === 'teacher'){
+          uploadScreen.push(<AppDragDropDemo2 appContext={self.props.appContext} role={self.state.loginRole} name={self.state.username}/>)
+          self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})
+        } else if(role === 'student6'){
+          uploadScreen.push(<AppDragDropDemo appContext={self.props.appContext} role={self.state.loginRole} name={self.state.username}/>)
+          self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})
+        }else{
+          uploadScreen.push(<AppDragDropDemo1 appContext={self.props.appContext} role={self.state.loginRole} name={self.state.username}/>)
+          self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})
+        }
+
        console.log("Login successfull");
-       var uploadScreen=[];
-       uploadScreen.push(<Landing appContext={self.props.appContext} role={self.state.loginRole} name={self.state.username}/>)
-       self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})
      }
      else if(response.data.code == 204){
        console.log("Username password do not match");
@@ -168,7 +180,7 @@ class Login extends Component {
         <MuiThemeProvider>
           <div>
            <TextField
-             hintText="Enter your College Rollno"
+             hintText="Enter your Student Id"
              floatingLabelText="Student Id"
              onChange = {(event,newValue) => this.setState({username:newValue})}
              />
@@ -192,7 +204,7 @@ class Login extends Component {
         <MuiThemeProvider>
           <div>
            <TextField
-             hintText="Enter your College Rollno"
+             hintText="Enter your Student Id"
              floatingLabelText="Teacher Id"
              onChange = {(event,newValue) => this.setState({username:newValue})}
              />
@@ -216,7 +228,7 @@ class Login extends Component {
         <MuiThemeProvider>
           <div>
            <TextField
-             hintText="Enter your College Rollno"
+             hintText="Enter your Student Id"
              floatingLabelText="Student Id"
              onChange = {(event,newValue) => this.setState({username:newValue})}
              />

@@ -11,7 +11,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 
-export default class AppDragDropDemo extends Component { //For higher class students
+export default class AppDragDropDemo extends Component { //For lower class students
 
     precedence = (op) => { 
         if(op === '+'||op === '-') 
@@ -137,12 +137,8 @@ export default class AppDragDropDemo extends Component { //For higher class stud
             {name:"8", category:"wip", bgcolor:"skyblue"},
             {name:"9", category:"wip", bgcolor:"skyblue"},
             {name:"0", category:"wip", bgcolor:"skyblue"},
-            {name:"*", category:"wip", bgcolor:"yellow"},
-            {name:"/", category:"wip", bgcolor:"yellow"},
             {name:"+", category:"wip", bgcolor:"yellow"},
             {name:"-", category:"wip", bgcolor:"yellow"},
-            {name:"(", category:"wip", bgcolor:"yellow"},
-            {name:")", category:"wip", bgcolor:"yellow"},
           ]
     }
     

@@ -17,69 +17,65 @@
 }
 
 .wip {
-  position: absolute;
-  width: 150px;
-  height: 100vh;
-  left: 0;
+  position: fixed;
+  width: 100%;
+  height: 40%;
+  left: 10;
   top: 10;
-  background-color: #EEEEEE;
-  border-right: 1px dotted;
+  background-color: rgb(238, 238, 238);
 }
 
 .header {
   display: inline-block;
+  font: 60px;
   margin: 0;
   padding: 0;
-  background-color: #E0E0E0;
+  height: 20%;
   width:100%;
 }
-
 .task-header {
-  display: inline-block;
-  background-color: skyblue;
+  font-family: Arial;
+  display: block;
+  font-size: 30px;
+  color: rgb(51, 50, 50);
+  margin-top: 40px;
   margin-bottom: 50px;
   width:100%;
 }
 
 .droppable {
   position: absolute;
-  width: 1500px;
-  height: 1000vh;
-  margin-bottom: 1000px;
-  right: 0;
-  top: 10;
-  background-color: #9E9E9E;
-  border-left: 1px dotted;
+  width: 60%;
+  height: 60%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(158, 158, 158);
+  border: 10px;
+  border-color: white;
+  border-style: solid;
 }
 
 .draggable {
+  
   display: inline;
+  color: white;
   margin:2px;
   padding: 15px;
-  border: 1px solid blue;    
-  background-color: yellow; 
-}
-
-.draggable-completee{
-
-  width: 50px;
-  height: 50px;
-  background-color: yellow;
-  margin: 5px auto;
-  line-height: 5em;
-
- 
+  font-size: 30px;
+  
 }
 
 
 .answer {
-  position: absolute;
-  width: 150px;
-  height: 1000vh;
-  margin-bottom: 10px;
+  position: fixed;
+  width: 40%;
+  height: 60%;
+  bottom: 0;
   right: 0;
-  top: 10;
-  background-color: rgb(33, 151, 3);
-  border-left: 1px dotted;
+  background-color: rgb(83, 163, 62);
+  border: 10px;
+  border-color: white;
+  border-style: solid;
 }
 

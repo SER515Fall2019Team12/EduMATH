@@ -11,7 +11,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 
-export default class AppDragDropDemo extends Component { //For higher class students
+export default class AppDragDropDemo extends Component { //For teachers
 
     precedence = (op) => { 
         if(op === '+'||op === '-') 
@@ -341,7 +341,7 @@ export default class AppDragDropDemo extends Component { //For higher class stud
              //Return or display function for rendering function is implemented 
              return (
             <div className="container-drag">
-                <h2 className="header">EduMath</h2>
+                <h2 className="header">EduMath Teacher</h2>
                 <div className="wip"
                     onDragOver={(e)=>this.onDragOver(e)}
                     onDrop={(e)=>{this.onDrop(e, "wip")}}>
