@@ -9,8 +9,6 @@
 
 import React, { Component } from 'react';
 import './App.css';
-import './precedenceOfOperators.js';
-import './applyOperatorsOnOperands.js';
 
 export default class AppDragDropDemo extends Component {
     
@@ -19,6 +17,10 @@ export default class AppDragDropDemo extends Component {
         return 1; 
         if(op === '*'||op === '/') 
         return 2; 
+        if(op == '^')
+        return 3;
+        if(op == '%')
+        return 4;
         return 0; 
     } 
 
@@ -30,12 +32,12 @@ export default class AppDragDropDemo extends Component {
             case '-': return a - b; 
             case '*': return a * b; 
             case '/': return a / b; 
+            case '^': return Math.pow(a,b);
+            case '%': return a % b;
         } 
     } 
 
-
-    evaluate =(tokens) =>
-    { 
+    evaluate =(tokens) =>{ 
        // tokens.replace(/\s/g, '');
         var i; 
         // stack to store integer values. 
@@ -50,9 +52,8 @@ export default class AppDragDropDemo extends Component {
              if(tokens[i] == ' ') 
                 continue; 
     
-            else if(tokens[i] == '+' || tokens[i] == '-' || tokens[i] == '/' || tokens[i] == '*')
-            { 
-    
+            else if(tokens[i] == '+' || tokens[i] == '-' || tokens[i] == '/' || tokens[i] == '*' || tokens[i] == '^' || tokens[i] == '%')
+            {     
                 // While top of 'ops' has same or greater  
                 // precedence to current token, which 
                 // is an operator. Apply operator on top  
@@ -63,8 +64,7 @@ export default class AppDragDropDemo extends Component {
                     var b = values.pop(); 
                     var o = ops.pop(); 
                     values.push(this.applyOp(b, a, o)); 
-                } 
-                  
+                }  
                 // Push current token to 'ops'. 
                 ops.push(tokens[i]); 
             } 
@@ -74,7 +74,6 @@ export default class AppDragDropDemo extends Component {
             { 
                 ops.push(tokens[i]); 
             } 
-            
             // Current token is a number, push  
             // it to stack for numbers. 
             else if(tokens[i] >= '0'  && tokens[i] <= '9')
@@ -89,8 +88,7 @@ export default class AppDragDropDemo extends Component {
                 } 
                 i--;
                 values.push(val); 
-            } 
-              
+            }  
             // Closing brace encountered, solve  
             // entire brace. 
             else if(tokens[i] == ')' ) 
@@ -105,8 +103,7 @@ export default class AppDragDropDemo extends Component {
                 // pop opening brace. 
                 if(ops.length > 0) 
                    ops.pop(); 
-            }
-            
+            }         
         } 
           
         // Entire expression has been parsed at this 
@@ -135,6 +132,8 @@ export default class AppDragDropDemo extends Component {
             {name:"/", category:"wip", bgcolor:"yellow"},
             {name:"+", category:"wip", bgcolor:"pink"},
             {name:"-", category:"wip", bgcolor:"pink"},
+            {name:"%", category:"wip", bgcolor:"pink"},
+            {name:"^", category:"wip", bgcolor:"pink"},
             {name:"6", category:"wip", bgcolor:"skyblue"},
             {name:"7", category:"wip", bgcolor:"skyblue"},
             {name:"8", category:"wip", bgcolor:"skyblue"},
@@ -142,13 +141,12 @@ export default class AppDragDropDemo extends Component {
             {name:"0", category:"wip", bgcolor:"skyblue"},
             {name:"(", category:"wip", bgcolor:"skyblue"},
             {name:")", category:"wip", bgcolor:"skyblue"},
-
           ]
     }
     
     state = {
         tasks: [
-            
+
           ]
     }
         onDragStart = (ev, id, cat, pId) => {
@@ -167,21 +165,6 @@ export default class AppDragDropDemo extends Component {
         let id = ev.dataTransfer.getData("id");
         let category = ev.dataTransfer.getData("category");
         let pId = ev.dataTransfer.getData("pId");
-        // let tasks = this.state.tasks.filter((task) => {
-        //     if (task.name == id) {
-        //         if(task.category == "wip") {
-        //              this.state.tasks.push({name:task.name,category:"complete", bgcolor: task.bgcolor});
-        //              //task.category = cat;
-        //         }
-        //         else {
-        //             //  this.state.tasks.pop();
-        //             //  task.category = cat;
-        //         }
-                
-        //     }
-        //     console.log(task);
-        //     return task;
-        // });
             if(category == "wip"){
                 this.state.tasks.push({name:id,category:"complete", bgcolor: "yellow", pId:this.global});
                 this.global++;
@@ -196,8 +179,6 @@ export default class AppDragDropDemo extends Component {
 
                 this.state.tasks = tasksU;
             }
-            
-                     //task.category = cat;
            
          this.setState({
             // ...this.state,
@@ -232,7 +213,7 @@ export default class AppDragDropDemo extends Component {
             console.log("----anssss: "+answer);
         });
 
-        var outputValue  = this.evaluate(answer);
+        var outputResult  = this.evaluate(answer);
 
         this.mState.tasks.forEach ((t) => {
             mTasks.tasks.push(
@@ -275,7 +256,7 @@ export default class AppDragDropDemo extends Component {
                      {tasks.complete}
                 </div>
             <div className="answer">
-                {outputValue}
+                {outputResult}
             </div>
             </div>
         );
