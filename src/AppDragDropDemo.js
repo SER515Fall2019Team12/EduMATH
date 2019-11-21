@@ -13,6 +13,14 @@ import './precedenceOfOperators.js';
 import './applyOperatorsOnOperands.js';
 
 export default class AppDragDropDemo extends Component {
+    
+    precedence = (op) => { 
+        if(op === '+'||op === '-') 
+        return 1; 
+        if(op === '*'||op === '/') 
+        return 2; 
+        return 0; 
+    } 
 
     evaluate =(tokens) =>
     { 
