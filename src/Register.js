@@ -46,16 +46,11 @@ class Register extends Component {
        console.log(response);
        if(response.data.code === 200){
         //  console.log("registration successfull");
-         var loginscreen=[];
-         loginscreen.push(<Login parentContext={this} appContext={self.props.appContext} role={role}/>);
-         var loginmessage = "Not Registered yet.Go to registration";
-         self.props.parentContext.setState({loginscreen:loginscreen,
-         loginmessage:loginmessage,
-         buttonLabel:"Register",
-         isLogin:true
-          });
+        alert("Registration Successful! Please login");
+        location.reload();
        }
        else{
+         alert("Error occured, please try again later");
          console.log("some error ocurred",response.data.code);
        }
      })
@@ -71,7 +66,7 @@ class Register extends Component {
   render() {
     // console.log("props",this.props);
     var userhintText,userLabel;
-    if(this.props.role === "student"){
+    if(this.props.role === "student1" || this.props.role === "student6" ){
       userhintText="Enter your Student Id";
       userLabel="Student Id";
     }
@@ -83,9 +78,9 @@ class Register extends Component {
       <div>
         <MuiThemeProvider>
           <div>
-          <AppBar
-             title="Register"
-           />
+          <div className='headerL2'>
+          <h1>Register</h1>
+        </div>
            <TextField
              hintText="Enter your First Name"
              floatingLabelText="First Name"

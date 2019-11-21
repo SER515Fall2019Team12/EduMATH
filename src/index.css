@@ -9,6 +9,22 @@ color: white;
 height: 500px;
 }
 
+.headerL {
+  padding: 10px;
+  text-align: center;
+  background: #02c2cf;
+  color: white;
+  font-size: 30px;
+}
+
+.headerL2 {
+  padding: 10px;
+  text-align: center;
+  background: #02c2cf;
+  color: white;
+  font-size: 15px;
+}
+
 .indexLend{
   background-color: rgb(25, 32, 11);
   color: white;

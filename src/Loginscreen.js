@@ -25,7 +25,12 @@ class Loginscreen extends Component {
       <div key={"Login-Div"}>
       <MuiThemeProvider>
         <div>
-           <RaisedButton label={"Register as Student"} primary={true} style={style} onClick={(event) => this.handleClick(event,'student')}/>
+           <RaisedButton label={"Register as Student - Grade 1"} primary={true} style={style} onClick={(event) => this.handleClick(event,'student1')}/>
+       </div>
+       </MuiThemeProvider>
+       <MuiThemeProvider>
+        <div>
+           <RaisedButton label={"Register as Student - Grade 6"} primary={true} style={style} onClick={(event) => this.handleClick(event,'student6')}/>
        </div>
        </MuiThemeProvider>
        <MuiThemeProvider>
@@ -61,7 +66,7 @@ class Loginscreen extends Component {
     if(this.state.isLogin){
       let loginscreen=[];
       loginscreen.push(<Register parentContext={this} appContext={this.props.appContext} role={userRole}/>);
-      loginmessage = "Already registered.Go to Login";
+      loginmessage = "Already registered? Go to Login!";
       let loginButtons=[];
       loginButtons.push(
         <div key="login-button">
@@ -69,6 +74,7 @@ class Loginscreen extends Component {
           <div>
              <RaisedButton label={"Login"} primary={true} style={style} onClick={(event) => this.handleClick(event,userRole)}/>
          </div>
+         
          </MuiThemeProvider>
         </div>
       )
@@ -84,15 +90,20 @@ class Loginscreen extends Component {
       loginButtons.push(
         <div>
         <MuiThemeProvider>
-          <div>
-             <RaisedButton label={"Register as Student"} primary={true} style={style} onClick={(event) => this.handleClick(event,'student')}/>
-         </div>
-         </MuiThemeProvider>
-         <MuiThemeProvider>
-         <div>
-            <RaisedButton label={"Register as Teacher"} primary={true} style={style} onClick={(event) => this.handleClick(event,'teacher')}/>
-        </div>
-        </MuiThemeProvider>
+        <div>
+           <RaisedButton label={"Register as Student - Grade 1"} primary={true} style={style} onClick={(event) => this.handleClick(event,'student1')}/>
+       </div>
+       </MuiThemeProvider>
+       <MuiThemeProvider>
+        <div>
+           <RaisedButton label={"Register as Student - Grade 6"} primary={true} style={style} onClick={(event) => this.handleClick(event,'student6')}/>
+       </div>
+       </MuiThemeProvider>
+       <MuiThemeProvider>
+       <div>
+          <RaisedButton label={"Register as Teacher"} primary={true} style={style} onClick={(event) => this.handleClick(event,'teacher')}/>
+      </div>
+      </MuiThemeProvider>
         </div>
       )
       loginscreen.push(<Login parentContext={this} appContext={this.props.appContext} role={userRole}/>);

@@ -36,7 +36,7 @@ class Login extends Component {
              onChange = {(event,newValue) => this.setState({password:newValue})}
              />
            <br/>
-           <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+           <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event, this.state.loginRole)}/>
        </div>
        </MuiThemeProvider>
     )
@@ -45,13 +45,13 @@ class Login extends Component {
       password:'',
       menuValue:1,
       loginComponent:localloginComponent,
-      loginRole:'student'
+      loginRole:'student1'
     }
   }
   componentWillMount(){
   // console.log("willmount prop values",this.props);
   if(this.props.role != undefined){
-    if(this.props.role == 'student'){
+    if(this.props.role == 'student1'){
       console.log("in student componentWillMount");
       var localloginComponent=[];
       localloginComponent.push(
@@ -70,11 +70,35 @@ class Login extends Component {
                onChange = {(event,newValue) => this.setState({password:newValue})}
                />
              <br/>
-             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event, this.props.role)}/>
          </div>
          </MuiThemeProvider>
       )
-      this.setState({menuValue:1,loginComponent:localloginComponent,loginRole:'student'})
+      this.setState({menuValue:1,loginComponent:localloginComponent,loginRole:'student1'})
+    } else if(this.props.role == 'student6'){
+      console.log("in student componentWillMount");
+      var localloginComponent=[];
+      localloginComponent.push(
+        <MuiThemeProvider>
+          <div>
+           <TextField
+             hintText="Enter your College Rollno"
+             floatingLabelText="Student Id"
+             onChange = {(event,newValue) => this.setState({username:newValue})}
+             />
+           <br/>
+             <TextField
+               type="password"
+               hintText="Enter your Password"
+               floatingLabelText="Password"
+               onChange = {(event,newValue) => this.setState({password:newValue})}
+               />
+             <br/>
+             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event, this.props.role)}/>
+         </div>
+         </MuiThemeProvider>
+      )
+      this.setState({menuValue:1,loginComponent:localloginComponent,loginRole:'student6'})
     }
     else if(this.props.role == 'teacher'){
       console.log("in teacher componentWillMount");
@@ -95,7 +119,7 @@ class Login extends Component {
                onChange={(event,newValue) => this.setState({password:newValue})}
                />
              <br/>
-             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event, this.props.role)}/>
          </div>
          </MuiThemeProvider>
       )
@@ -103,11 +127,12 @@ class Login extends Component {
     }
   }
   }
-  handleClick(event){
+  handleClick(event, role){
     var self = this;
     var payload={
       "userid":this.state.username,
-	    "password":this.state.password
+      "password":this.state.password,
+      "role":role
     }
     axios.post(apiBaseUrl+'login', payload)
    .then(function (response) {
@@ -136,7 +161,7 @@ class Login extends Component {
     var loginRole;
     if(value==1){
       var localloginComponent=[];
-      loginRole='student';
+      loginRole='student1';
       localloginComponent.push(
         <MuiThemeProvider>
           <div>
@@ -153,7 +178,7 @@ class Login extends Component {
                onChange = {(event,newValue) => this.setState({password:newValue})}
                />
              <br/>
-             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event, loginRole)}/>
          </div>
          </MuiThemeProvider>
       )
@@ -177,7 +202,31 @@ class Login extends Component {
                onChange = {(event,newValue) => this.setState({password:newValue})}
                />
              <br/>
-             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event, loginRole)}/>
+         </div>
+         </MuiThemeProvider>
+      )
+    }
+    else if(value == 3){
+      var localloginComponent=[];
+      loginRole='student6';
+      localloginComponent.push(
+        <MuiThemeProvider>
+          <div>
+           <TextField
+             hintText="Enter your College Rollno"
+             floatingLabelText="Student Id"
+             onChange = {(event,newValue) => this.setState({username:newValue})}
+             />
+           <br/>
+             <TextField
+               type="password"
+               hintText="Enter your Password"
+               floatingLabelText="Password"
+               onChange = {(event,newValue) => this.setState({password:newValue})}
+               />
+             <br/>
+             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event, loginRole)}/>
          </div>
          </MuiThemeProvider>
       )
@@ -189,16 +238,15 @@ class Login extends Component {
   render() {
     return (
       <div className='indexL'>
-        <MuiThemeProvider>
-        <AppBar
-             title="EDUMath! Learn maths in fun way"
-           />
-        </MuiThemeProvider>
+        <div className='headerL'>
+          <h1>EDUMath! Learn maths in fun way</h1>
+        </div>
         <MuiThemeProvider>
         <div>
         <p>Role: </p>
         <DropDownMenu value={this.state.menuValue} onChange={(event,index,value)=>this.handleMenuChange(value)}>
-          <MenuItem value={1} primaryText="Student" />
+          <MenuItem value={1} primaryText="Student - Grade 1" />
+          <MenuItem value={3} primaryText="Student - Grade 6" />
           <MenuItem value={2} primaryText="Teacher" />
         </DropDownMenu>
         </div>

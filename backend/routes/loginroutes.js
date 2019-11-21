@@ -28,7 +28,8 @@ exports.register = function(req,res){
      "password":req.body.password,
      "created":today,
      "email":req.body.userid,
-     "modified":today
+     "modified":today,
+     "role":req.body.role
    }
    connection.query('INSERT INTO users SET ?',users, function (error, results, fields) {
    if (error) {
