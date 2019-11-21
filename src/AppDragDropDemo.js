@@ -22,6 +22,18 @@ export default class AppDragDropDemo extends Component {
         return 0; 
     } 
 
+      // Function to perform arithmetic operations. 
+      applyOp = (a, b, op) => { 
+        switch(op)
+        { 
+            case '+': return a + b; 	
+            case '-': return a - b; 
+            case '*': return a * b; 
+            case '/': return a / b; 
+        } 
+    } 
+
+
     evaluate =(tokens) =>
     { 
        // tokens.replace(/\s/g, '');
