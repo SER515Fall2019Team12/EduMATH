@@ -54,8 +54,11 @@ class Register extends Component {
          buttonLabel:"Register",
          isLogin:true
           });
+        alert("Registration Successful! Please login");
+        location.reload();
        }
        else{
+        alert("Error occured, please try again later");
          console.log("some error ocurred",response.data.code);
        }
      })
@@ -71,7 +74,7 @@ class Register extends Component {
   render() {
     // console.log("props",this.props);
     var userhintText,userLabel;
-    if(this.props.role === "student"){
+    if(this.props.role === "student1" || this.props.role === "student6" ){
       userhintText="Enter your Student Id";
       userLabel="Student Id";
     }
