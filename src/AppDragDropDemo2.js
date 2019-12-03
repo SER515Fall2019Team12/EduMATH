@@ -10,17 +10,14 @@
 import React, { Component } from 'react';
 import './App.css';
 
-export default class AppDragDropDemo extends Component { //Teacher
+
+export default class AppDragDropDemo extends Component {
 
     precedence = (op) => { 
         if(op === '+'||op === '-') 
         return 1; 
         if(op === '*'||op === '/') 
         return 2; 
-        if(op == '^')
-        return 3;
-        if(op == '%')
-        return 4;
         return 0; 
     } 
       
@@ -32,8 +29,6 @@ export default class AppDragDropDemo extends Component { //Teacher
             case '-': return a - b; 
             case '*': return a * b; 
             case '/': return a / b; 
-            case '^': return Math.pow(a,b);
-            case '%': return a % b;
         } 
     } 
       
@@ -55,7 +50,7 @@ export default class AppDragDropDemo extends Component { //Teacher
              if(tokens[i] == ' ') 
                 continue; 
     
-            else if(tokens[i] == '+' || tokens[i] == '-' || tokens[i] == '/' || tokens[i] == '*' || tokens[i] == '^' || tokens[i] == '%')
+            else if(tokens[i] == '+' || tokens[i] == '-' || tokens[i] == '/' || tokens[i] == '*')
             { 
     
                 // While top of 'ops' has same or greater  
@@ -132,7 +127,7 @@ export default class AppDragDropDemo extends Component { //Teacher
     global = 0;
     mState = {
         tasks: [
-            {name:"1", category:"wip", bgcolor: "skyblue"},
+            {name:"1", category:"wip", bgcolor:"skyblue"},
             {name:"2", category:"wip", bgcolor:"skyblue"},
             {name:"3", category:"wip", bgcolor:"skyblue"},
             {name:"4", category:"wip", bgcolor:"skyblue"},
@@ -142,14 +137,12 @@ export default class AppDragDropDemo extends Component { //Teacher
             {name:"8", category:"wip", bgcolor:"skyblue"},
             {name:"9", category:"wip", bgcolor:"skyblue"},
             {name:"0", category:"wip", bgcolor:"skyblue"},
-            {name:"*", category:"wip", bgcolor:"pink"},
-            {name:"/", category:"wip", bgcolor:"pink"},
-            {name:"+", category:"wip", bgcolor:"pink"},
-            {name:"-", category:"wip", bgcolor:"pink"},
-            {name:"%", category:"wip", bgcolor:"pink"},
-            {name:"^", category:"wip", bgcolor:"pink"},
-            {name:"(", category:"wip", bgcolor:"pink"},
-            {name:")", category:"wip", bgcolor:"pink"}
+            {name:"*", category:"wip", bgcolor:"yellow"},
+            {name:"/", category:"wip", bgcolor:"yellow"},
+            {name:"+", category:"wip", bgcolor:"yellow"},
+            {name:"-", category:"wip", bgcolor:"yellow"},
+            {name:"(", category:"wip", bgcolor:"yellow"},
+            {name:")", category:"wip", bgcolor:"yellow"},
           ]
     }
     
@@ -190,7 +183,7 @@ export default class AppDragDropDemo extends Component { //Teacher
         //     return task;
         // });
             if(category == "wip"){
-                this.state.tasks.push({name:id,category:"complete", bgcolor: 'rgb(69, 109, 241)', pId:this.global});
+                this.state.tasks.push({name:id,category:"complete", bgcolor: "yellow", pId:this.global});
                 this.global++;
             }else{
                 console.log("PID----"+pId);
@@ -239,16 +232,7 @@ export default class AppDragDropDemo extends Component { //Teacher
             console.log("----anssss: "+answer);
         });
 
-        if(answer.length==0){
-            var outputResult  = "";     
-        }
-        else{
-        var outputResult  = this.evaluate(answer);
-        console.log("---->>>>> or: "+outputResult);
-        if(outputResult!=0 && !outputResult){
-            outputResult = "Invalid Expression"
-        }
-    }
+        var outputValue  = this.evaluate(answer);
         
         // var currentIndex = 0 ;
         // var operandFirst = 0;
@@ -357,23 +341,22 @@ export default class AppDragDropDemo extends Component { //Teacher
              //Return or display function for rendering function is implemented 
              return (
             <div className="container-drag">
-                <h2 className="header">EduMath</h2>
+                <h2 className="header">EduMath Teacher</h2>
                 <div className="wip"
                     onDragOver={(e)=>this.onDragOver(e)}
                     onDrop={(e)=>{this.onDrop(e, "wip")}}>
-                 <span className="task-header">Numbers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operators</span>
+                    <span className="task-header"><pre>numbers                      Operators</pre></span>
                     {mTasks.tasks}
                 </div>
              <div className="droppable" 
                     onDragOver={(e)=>this.onDragOver(e)}
                     onDrop={(e)=>this.onDrop(e, "complete")}>
-                    <span className="task-header">Sandbox</span>
+                     <span className="task-header">Sandbox</span>
                      {tasks.complete}
                 </div>
             <div className="answer">
             <span className="task-header">Result</span>
-            <span className="task-header">{outputResult}</span>
+            <span className="task-header">{outputValue}</span>
                 
             </div>
             </div>
