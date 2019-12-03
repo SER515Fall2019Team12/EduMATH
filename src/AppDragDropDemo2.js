@@ -174,10 +174,7 @@ export default class AppDragDropDemo extends Component { //Teacher
         let id = ev.dataTransfer.getData("id");
         let category = ev.dataTransfer.getData("category");
         let pId = ev.dataTransfer.getData("pId");
-        //     }
-        //     console.log(task);
-        //     return task;
-        // });
+        
             if(category == "wip"){
                 this.state.tasks.push({name:id,category:"complete", bgcolor: 'rgb(69, 109, 241)', pId:this.global});
                 this.global++;
@@ -239,86 +236,9 @@ export default class AppDragDropDemo extends Component { //Teacher
         }
     }
         
-        // var currentIndex = 0 ;
-        // var operandFirst = 0;
-        // var operandSecond = 0 ;
-        // var isFirstCalculated = 0 ;
-        // var mathematicalOperator ;
-
+      
         
-        // if(answer[answer.length-1] != '+' && answer[answer.length-1] != '-' && answer[answer.length-1] != '/' && answer[answer.length-1] != 'X'){
-        //     var answerStrVal = answer.toString();
-        //     console.log("============"+answerStrVal);
-        //     outputValue = eval(answerStrVal.replace(/,/g,''));
-        // }
-        // else 
-        // outputValue = answer ; 
-
-        // console.log("outputValue = " + outputValue);
-
-    //    if(answer[answer.length-1] == '+'  || answer[answer.length-1] == '-' || answer[answer.length-1] == '/' || answer[answer.length-1] == 'X')
-    //    {
-    //        outputValue = "Invalid Formate"
-    //    } 
-    //    else 
-    //    {
-    //     while(currentIndex<answer.length)
-    //     {
-    //        operandSecond = 0 ;  
-    //        if(isFirstCalculated == 0)
-    //        {
-    //                 isFirstCalculated = 1;
-    //                 while(currentIndex<answer.length && answer[currentIndex] >= '0' && answer[currentIndex] <= '9')
-    //                     {
-    //                         operandFirst = 10*operandFirst + parseInt(answer[currentIndex]);
-    //                         currentIndex++;
-    //                     }
-    //        }
-    //        if(currentIndex >= answer.length)
-    //        {
-    //            outputValue = operandFirst;
-    //            break;
-    //        }
-
-    //        var mathematicalOperator = answer[currentIndex++]
-    //        if(answer[currentIndex] < '0' || answer[currentIndex] > '9')
-    //        {
-    //            alert("You can not use two operator together\n Please bring it back to its original place !!!");
-    //        }
-    //        if(currentIndex == answer.length)
-    //        {
-    //            outputValue = operandFirst;
-    //            break;
-    //        }
-
-    //         while(currentIndex < answer.length && answer[currentIndex] >= '0' && answer[currentIndex] <= '9')
-    //         {
-    //            operandSecond = 10*operandSecond + parseInt(answer[currentIndex]);
-    //            currentIndex++;
-    //         }
-    //         if(mathematicalOperator == '+')
-    //         {
-    //            outputValue = operandFirst + operandSecond;
-    //         }
-    //         else if(mathematicalOperator == '-')
-    //         {
-    //         outputValue = operandFirst - operandSecond;
-    //         }
-    //         else if(mathematicalOperator == '/')
-    //         {
-    //         if(operandSecond == 0)
-    //         alert("Can not divide by zero. Undefine !!!");
-    //         else 
-    //         outputValue = operandFirst / operandSecond;
-    //         }
-    //         else if(mathematicalOperator == 'X')
-    //         {
-    //         outputValue = operandFirst * operandSecond;
-    //         }
-    //         operandFirst =  outputValue;
-    //         }
-    // }
-
+       
         this.mState.tasks.forEach ((t) => {
             mTasks.tasks.push(
                 <div key={t.name} 
