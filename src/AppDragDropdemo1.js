@@ -123,28 +123,34 @@ export default class AppDragDropDemo extends Component {
         // Top of 'values' contains result, return it. 
         return values[values.length-1]; 
     } 
-    state = {
+    global = 0;
+    mState = {
         tasks: [
-            {name:"1", category:"wip", bgcolor: "skyblue"},
+            {name:"1", category:"wip", bgcolor:"skyblue"},
             {name:"2", category:"wip", bgcolor:"skyblue"},
             {name:"3", category:"wip", bgcolor:"skyblue"},
             {name:"4", category:"wip", bgcolor:"skyblue"},
             {name:"5", category:"wip", bgcolor:"skyblue"},
-            {name:"X", category:"wip", bgcolor:"yellow"},
-            {name:"/", category:"wip", bgcolor:"yellow"},
-            {name:"+", category:"wip", bgcolor:"pink"},
-            {name:"-", category:"wip", bgcolor:"pink"},
             {name:"6", category:"wip", bgcolor:"skyblue"},
             {name:"7", category:"wip", bgcolor:"skyblue"},
             {name:"8", category:"wip", bgcolor:"skyblue"},
             {name:"9", category:"wip", bgcolor:"skyblue"},
             {name:"0", category:"wip", bgcolor:"skyblue"},
+            {name:"+", category:"wip", bgcolor:"pink"},
+            {name:"-", category:"wip", bgcolor:"pink"},
           ]
     }
     
-        onDragStart = (ev, id) => {
+    state = {
+        tasks: [
+            
+          ]
+    }
+        onDragStart = (ev, id, cat, pId) => {
         console.log('dragstart:',id);
         ev.dataTransfer.setData("id", id);
+        ev.dataTransfer.setData("category", cat);
+        ev.dataTransfer.setData("pId", pId);
     }
         
         onDragOver = (ev) => {
