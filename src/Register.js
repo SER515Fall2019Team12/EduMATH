@@ -93,7 +93,7 @@ class Register extends Component {
              onChange = {(event,newValue) => this.setState({last_name:newValue})}
              />
            <br/>
-           <TextField
+           <TextField 
              hintText={userhintText}
              floatingLabelText={userLabel}
              onChange = {(event,newValue) => this.setState({email:newValue})}

@@ -6,11 +6,13 @@
 * @author Sajjan, Amit, Vaibhav, Shubham
 @version 1.0
 */
-.App {
+.App-main {
   text-align: center;
   width: 95%;
   margin: 15px auto;
 }
+
+
 
 .container-drag {
   text-align: center;
@@ -18,18 +20,25 @@
 
 .wip {
   position: fixed;
+
   width: 100%;
   height: 40%;
-  left: 10;
+  left: 0;
   top: 10;
-  background-color: rgb(238, 238, 238);
+  background-color: rgb(68, 66, 66);
 }
 
 .header {
-  display: inline-block;
-  font: 60px;
+  background-image:url(mix.png);
+  background-repeat: repeat; /* Do not repeat the image */
+  background-color: white;
+  background-size: 10%;
+  color: rgb(14, 12, 12);
+  font-weight: bolder ;
+  font-size: 110px;
+  text-align: center;
   margin: 0;
-  padding: 0;
+  padding: 0; 
   height: 20%;
   width:100%;
 }
@@ -37,7 +46,7 @@
   font-family: Arial;
   display: block;
   font-size: 30px;
-  color: rgb(51, 50, 50);
+  color: rgb(250, 245, 245);
   margin-top: 40px;
   margin-bottom: 50px;
   width:100%;
@@ -73,7 +82,7 @@
   height: 60%;
   bottom: 0;
   right: 0;
-  background-color: rgb(83, 163, 62);
+  background-color: rgb(69, 109, 241);
   border: 10px;
   border-color: white;
   border-style: solid;

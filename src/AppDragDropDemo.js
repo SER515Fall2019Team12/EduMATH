@@ -137,19 +137,19 @@ export default class AppDragDropDemo extends Component { //For higher class stud
             {name:"3", category:"wip", bgcolor:"skyblue"},
             {name:"4", category:"wip", bgcolor:"skyblue"},
             {name:"5", category:"wip", bgcolor:"skyblue"},
-            {name:"*", category:"wip", bgcolor:"yellow"},
-            {name:"/", category:"wip", bgcolor:"yellow"},
-            {name:"+", category:"wip", bgcolor:"pink"},
-            {name:"-", category:"wip", bgcolor:"pink"},
-            {name:"%", category:"wip", bgcolor:"pink"},
-            {name:"^", category:"wip", bgcolor:"pink"},
             {name:"6", category:"wip", bgcolor:"skyblue"},
             {name:"7", category:"wip", bgcolor:"skyblue"},
             {name:"8", category:"wip", bgcolor:"skyblue"},
             {name:"9", category:"wip", bgcolor:"skyblue"},
             {name:"0", category:"wip", bgcolor:"skyblue"},
-            {name:"(", category:"wip", bgcolor:"skyblue"},
-            {name:")", category:"wip", bgcolor:"skyblue"},
+            {name:"*", category:"wip", bgcolor:"pink"},
+            {name:"/", category:"wip", bgcolor:"pink"},
+            {name:"+", category:"wip", bgcolor:"pink"},
+            {name:"-", category:"wip", bgcolor:"pink"},
+            {name:"%", category:"wip", bgcolor:"pink"},
+            {name:"^", category:"wip", bgcolor:"pink"},
+            {name:"(", category:"wip", bgcolor:"pink"},
+            {name:")", category:"wip", bgcolor:"pink"}
           ]
     }
     
@@ -190,7 +190,7 @@ export default class AppDragDropDemo extends Component { //For higher class stud
         //     return task;
         // });
             if(category == "wip"){
-                this.state.tasks.push({name:id,category:"complete", bgcolor: "yellow", pId:this.global});
+                this.state.tasks.push({name:id,category:"complete", bgcolor: 'rgb(69, 109, 241)', pId:this.global});
                 this.global++;
             }else{
                 console.log("PID----"+pId);
@@ -239,7 +239,16 @@ export default class AppDragDropDemo extends Component { //For higher class stud
             console.log("----anssss: "+answer);
         });
 
+        
+        if(answer.length==0){
+            var outputResult  = "";     
+        }
+        else{
         var outputResult  = this.evaluate(answer);
+        if(outputResult!=0 && !outputResult){
+            outputResult = "Invalid Expression"
+        }
+    }
         
         // var currentIndex = 0 ;
         // var operandFirst = 0;
@@ -348,17 +357,18 @@ export default class AppDragDropDemo extends Component { //For higher class stud
              //Return or display function for rendering function is implemented 
              return (
             <div className="container-drag">
-                <h2 className="header">EduMath</h2>
+               <div className="header">EduMath</div>
                 <div className="wip"
                     onDragOver={(e)=>this.onDragOver(e)}
                     onDrop={(e)=>{this.onDrop(e, "wip")}}>
-                    <span className="task-header">OPERATORS</span>
+                   <span className="task-header">Numbers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operators</span>
                     {mTasks.tasks}
                 </div>
              <div className="droppable" 
                     onDragOver={(e)=>this.onDragOver(e)}
                     onDrop={(e)=>this.onDrop(e, "complete")}>
-                    <span className="task-header">SANDBOX</span>
+                    <span className="task-header">Sandbox</span>
                      {tasks.complete}
                 </div>
             <div className="answer">

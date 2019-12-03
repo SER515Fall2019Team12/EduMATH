@@ -137,8 +137,8 @@ export default class AppDragDropDemo extends Component { //For lower class stude
             {name:"8", category:"wip", bgcolor:"skyblue"},
             {name:"9", category:"wip", bgcolor:"skyblue"},
             {name:"0", category:"wip", bgcolor:"skyblue"},
-            {name:"+", category:"wip", bgcolor:"yellow"},
-            {name:"-", category:"wip", bgcolor:"yellow"},
+            {name:"+", category:"wip", bgcolor:"pink"},
+            {name:"-", category:"wip", bgcolor:"pink"},
           ]
     }
     
@@ -179,7 +179,7 @@ export default class AppDragDropDemo extends Component { //For lower class stude
         //     return task;
         // });
             if(category == "wip"){
-                this.state.tasks.push({name:id,category:"complete", bgcolor: "yellow", pId:this.global});
+                this.state.tasks.push({name:id,category:"complete", bgcolor: 'rgb(69, 109, 241)', pId:this.global});
                 this.global++;
             }else{
                 console.log("PID----"+pId);
@@ -228,7 +228,15 @@ export default class AppDragDropDemo extends Component { //For lower class stude
             console.log("----anssss: "+answer);
         });
 
-        var outputValue  = this.evaluate(answer);
+        if(answer.length==0){
+            var outputResult  = "";     
+        }
+        else{
+        var outputResult  = this.evaluate(answer);
+        if(outputResult!=0 && !outputResult){
+            outputResult = "Invalid Expression"
+        }
+    }
         
         // var currentIndex = 0 ;
         // var operandFirst = 0;
@@ -341,7 +349,8 @@ export default class AppDragDropDemo extends Component { //For lower class stude
                 <div className="wip"
                     onDragOver={(e)=>this.onDragOver(e)}
                     onDrop={(e)=>{this.onDrop(e, "wip")}}>
-                    <span className="task-header"><pre>numbers                      Operators</pre></span>
+               <span className="task-header">Numbers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operators</span>
                     {mTasks.tasks}
                 </div>
              <div className="droppable" 
@@ -352,8 +361,7 @@ export default class AppDragDropDemo extends Component { //For lower class stude
                 </div>
             <div className="answer">
             <span className="task-header">Result</span>
-            <span className="task-header">{outputValue}</span>
-                
+            <span className="task-header">{outputResult}</span>
             </div>
             </div>
         );

@@ -26,7 +26,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div className="App-main">
         {this.state.loginPage}
         {this.state.uploadScreen}
       </div>
