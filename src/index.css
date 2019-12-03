@@ -3,7 +3,16 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
-.sajjan{
+.indexL{
 background-color: darkslategray;
 color: white;
+height: 500px;
+}
+
+.headerL {
+  padding: 10px;
+  text-align: center;
+  background: #02c2cf;
+  color: white;
+  font-size: 30px;
 }
