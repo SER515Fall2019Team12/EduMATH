@@ -108,7 +108,8 @@ class Login extends Component {
     var self = this;
     var payload={
       "userid":this.state.username,
-	    "password":this.state.password
+      "password":this.state.password,
+      "role":role
     }
     axios.post(apiBaseUrl+'login', payload)
    .then(function (response) {
