@@ -187,43 +187,37 @@ export default class AppDragDropDemo extends Component {
         //this function contains render features 
         render() {
             //tasks holds arrays of draggable objects according to positions
-            var tasks = {
-            wip: [],
+        var tasks = {
             complete: []
         }
+
+        var mTasks = {
+            tasks: []
+        }
+        var answer = [];
             //For loop checks for object categories and creates array
             this.state.tasks.forEach ((t) => {
-            tasks[t.category].push(
+            tasks.complete.push(
                 <div key={t.name} 
-                    onDragStart = {(e) => this.onDragStart(e, t.name)}
+                    onDragStart = {(e) => this.onDragStart(e, t.name, t.category, t.pId)}
                     draggable
                     className="draggable"
                     style = {{backgroundColor: t.bgcolor}}
                 >
                     {t.name}
+                    
                 </div>
             );
+            answer.push(t.name);
+            console.log("----anssss: "+answer);
         });
-             //Return or display function for rendering function is implemented 
-             return (
-            <div className="container-drag">
-                <h2 className="header">EduMath</h2>
-                <div className="wip"
-                    onDragOver={(e)=>this.onDragOver(e)}
-                    onDrop={(e)=>{this.onDrop(e, "wip")}}>
-                    <span className="task-header">OPERATORS</span>
-                    {tasks.wip}
-                </div>
-             <div className="droppable" 
-                    onDragOver={(e)=>this.onDragOver(e)}
-                    onDrop={(e)=>this.onDrop(e, "complete")}>
-                     <span className="task-header">SANDBOX</span>
-                     {tasks.complete}
-                </div>
 
-
-            </div>
-        );
+        if(answer.length==0){
+            var outputResult  = "";     
+        }
+        else{
+        var outputResult  = this.evaluate(answer);
+        if(outputResult!=0 && !outputResult){
+            outputResult = "Invalid Expression"
+        }
     }
-        
-   }
