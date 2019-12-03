@@ -79,7 +79,26 @@ class Login extends Component {
          </MuiThemeProvider>
       )
       this.setState({menuValue:1,loginComponent:localloginComponent,loginRole:'student1'})
-    } 
+    } else if(this.props.role == 'student6'){
+      console.log("in student componentWillMount");
+      var localloginComponent=[];
+      localloginComponent.push(
+        <MuiThemeProvider>
+          <div>
+           <TextField
+             hintText="Enter your College Rollno"
+             hintText="Enter your Student Id"
+             floatingLabelText="Student Id"
+             onChange = {(event,newValue) => this.setState({username:newValue})}
+             />
+             <br/>
+             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event, this.props.role)}/>
+         </div>
+         </MuiThemeProvider>
+      )
+      this.setState({menuValue:1,loginComponent:localloginComponent,loginRole:'student6'})
+    }
     else if(this.props.role == 'teacher'){
       console.log("in teacher componentWillMount");
       var localloginComponent=[];
