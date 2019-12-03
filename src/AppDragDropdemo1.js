@@ -31,6 +31,98 @@ export default class AppDragDropDemo extends Component {
             case '/': return a / b; 
         } 
     }
+    
+     // Function that returns value of 
+    // expression after evaluation. 
+    evaluate =(tokens) =>
+    { 
+       // tokens.replace(/\s/g, '');
+        var i; 
+        // stack to store integer values. 
+         var values = [];
+          
+        // stack to store operators. 
+        //stack <char> ops;
+        var ops = [];
+    
+        for(i = 0; i < tokens.length; i++)
+        { 
+             if(tokens[i] == ' ') 
+                continue; 
+    
+            else if(tokens[i] == '+' || tokens[i] == '-' || tokens[i] == '/' || tokens[i] == '*')
+            { 
+    
+                // While top of 'ops' has same or greater  
+                // precedence to current token, which 
+                // is an operator. Apply operator on top  
+                // of 'ops' to top two elements in values stack. 
+                while(ops.length > 0 && (this.precedence(ops[ops.length-1]) >= this.precedence(tokens[i])))
+                 { 
+                    var a = values.pop(); 
+                    var b = values.pop(); 
+                    var o = ops.pop(); 
+                    values.push(this.applyOp(b, a, o)); 
+                } 
+                  
+                // Push current token to 'ops'. 
+                ops.push(tokens[i]); 
+            } 
+            // Current token is an opening  
+            // brace, push it to 'ops' 
+            else if(tokens[i] == '(')
+            { 
+                ops.push(tokens[i]); 
+            } 
+            
+            // Current token is a number, push  
+            // it to stack for numbers. 
+            else if(tokens[i] >= '0'  && tokens[i] <= '9')
+            {   
+                var val = 0; 
+                // There may be more than one 
+                // digits in number. 
+                while(i < tokens.length &&  tokens[i] >= '0'  && tokens[i] <= '9') 
+                { 
+                    val = (val*10) + (tokens[i]-'0'); 
+                    i++; 
+                } 
+                i--;
+                values.push(val); 
+            } ///
+              
+            // Closing brace encountered, solve  
+            // entire brace. 
+            else if(tokens[i] == ')' ) 
+            { 
+                while(ops.length > 0 && ops[ops.length-1] != '(') 
+                { 
+                    var val2 = values.pop(); 
+                    var val1 = values.pop(); 
+                    var op = ops.pop(); 
+                    values.push(this.applyOp(val1, val2, op)); 
+                } 
+                // pop opening brace. 
+                if(ops.length > 0) 
+                   ops.pop(); 
+            }
+            
+        } 
+          
+        // Entire expression has been parsed at this 
+        // point, apply remaining ops to remaining 
+        // values. 
+        while(ops.length > 0)
+        { 
+            var p = values.pop(); 
+            var q = values.pop(); 
+            var oo = ops.pop(); 
+            values.push(this.applyOp(q, p, oo)); 
+        } 
+        
+        // Top of 'values' contains result, return it. 
+        return values[values.length-1]; 
+    } 
     state = {
         tasks: [
             {name:"1", category:"wip", bgcolor: "skyblue"},
