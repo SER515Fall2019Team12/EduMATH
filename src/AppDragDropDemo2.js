@@ -254,14 +254,7 @@ export default class AppDragDropDemo extends Component { //Teacher
 
        
 
-        // for(var i=0; i<answer.length; i++){
-        //     if(parseInt(answer[i])!=NaN){
-        //         finAns = 10*finAns + parseInt(answer[i]);
-        //     } else{
-        //         op1 = finAns;
-        //         finAns = 0;
-        //     }
-        // }
+     
 
              //Return or display function for rendering function is implemented 
              return (
