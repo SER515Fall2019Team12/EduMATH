@@ -44,27 +44,48 @@
 }
 
 .task-header {
-  display: inline-block;
-  background-color: skyblue;
+  font-family: Arial;
+  display: block;
+  font-size: 30px;
+  color: rgb(250, 245, 245);
+  margin-top: 40px;
+  margin-bottom: 50px;
   width:100%;
 }
 
 .droppable {
   position: absolute;
-  width: 150px;
-  height: 100vh;
-  right: 0;
-  top: 10;
-  background-color: #9E9E9E;
-  border-left: 1px dotted;
+  width: 60%;
+  height: 60%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(158, 158, 158);
+  border: 10px;
+  border-color: white;
+  border-style: solid;
 }
 
 .draggable {
-  width: 50px;
-  height: 50px;
-  background-color: yellow;
-  margin: 5px auto;
-  line-height: 5em;
+  
+  display: inline;
+  color: white;
+  margin:2px;
+  padding: 15px;
+  font-size: 30px;
+  
 }
 
+
+.answer {
+  position: fixed;
+  width: 40%;
+  height: 60%;
+  bottom: 0;
+  right: 0;
+  background-color: rgb(69, 109, 241);
+  border: 10px;
+  border-color: white;
+  border-style: solid;
+}
 
