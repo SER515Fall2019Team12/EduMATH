@@ -11,7 +11,6 @@ import React, { Component } from 'react';
 import './App.css';
 
 export default class AppDragDropDemo extends Component {
-    
     state = {
         tasks: [
             {name:"1", category:"wip", bgcolor: "skyblue"},
