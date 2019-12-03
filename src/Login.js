@@ -200,30 +200,28 @@ class Login extends Component {
         )
       }
   
-    else if(value == 2){
-      var localloginComponent=[];
-      loginRole='teacher';
-      localloginComponent.push(
-        <MuiThemeProvider>
-          <div>
-           <TextField
-             hintText="Enter your College Rollno"
-             floatingLabelText="Teacher Id"
-             onChange = {(event,newValue) => this.setState({username:newValue})}
-             />
-           <br/>
+  
+      else if(value == 3){
+        var localloginComponent=[];
+        loginRole='student6';
+        localloginComponent.push(
+          <MuiThemeProvider>
+            <div>
              <TextField
-               type="password"
-               hintText="Enter your Password"
-               floatingLabelText="Password"
-               onChange = {(event,newValue) => this.setState({password:newValue})}
+               hintText="Enter your Student Id"
+               floatingLabelText="Student Id"
+               onChange = {(event,newValue) => this.setState({username:newValue})}
                />
              <br/>
-             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
-         </div>
-         </MuiThemeProvider>
-      )
-    }
+               <TextField
+                 type="password"
+                 hintText="Enter your Password"
+                 floatingLabelText="Password"
+                 onChange = {(event,newValue) => this.setState({password:newValue})}
+                 />
+               <br/>
+               <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event, loginRole)}/>
+   
     this.setState({menuValue:value,
                    loginComponent:localloginComponent,
                    longinRole:loginRole})
@@ -236,19 +234,21 @@ class Login extends Component {
              title="Login"
            />
         </MuiThemeProvider>
+      <div className='indexL'>
+        <div className='headerL'>
+          <h1>EDUMath! Learn maths in fun way</h1>
+        </div>
         <MuiThemeProvider>
         <div>
         <p>Login as:</p>
+        <p>Role: </p>
         <DropDownMenu value={this.state.menuValue} onChange={(event,index,value)=>this.handleMenuChange(value)}>
           <MenuItem value={1} primaryText="Student" />
+          <MenuItem value={1} primaryText="Student - Grade 1" />
+          <MenuItem value={3} primaryText="Student - Grade 6" />
           <MenuItem value={2} primaryText="Teacher" />
         </DropDownMenu>
         </div>
-        </MuiThemeProvider>
-        {this.state.loginComponent}
-      </div>
-    );
-  }
 }
 
 const style = {
