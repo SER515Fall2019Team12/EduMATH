@@ -10,7 +10,27 @@
 import React, { Component } from 'react';
 import './App.css';
 
-export default class AppDragDropDemo extends Component {
+export default class AppDragDropDemo extends Component {//For lower class students
+
+    precedence = (op) => { 
+        if(op === '+'||op === '-') 
+        return 1; 
+        if(op === '*'||op === '/') 
+        return 2; 
+        return 0; 
+    } 
+      
+    // Function to perform arithmetic operations. 
+     applyOp = (a, b, op) => { 
+        switch(op)
+        { 
+            case '+': return a + b; 	
+            case '-': return a - b; 
+            case '*': return a * b; 
+            case '/': return a / b; 
+        } 
+    } 
+    
     state = {
         tasks: [
             {name:"1", category:"wip", bgcolor: "skyblue"},
