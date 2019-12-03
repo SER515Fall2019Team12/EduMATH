@@ -174,7 +174,6 @@ export default class AppDragDropDemo extends Component { //Teacher
         let id = ev.dataTransfer.getData("id");
         let category = ev.dataTransfer.getData("category");
         let pId = ev.dataTransfer.getData("pId");
-        // let tasks = this.state.tasks.filter((task) => {
         //     if (task.name == id) {
         //         if(task.category == "wip") {
         //              this.state.tasks.push({name:task.name,category:"complete", bgcolor: task.bgcolor});
