@@ -15,8 +15,10 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 var apiBaseUrl = "http://localhost:4000/api/";
 import axios from 'axios';
-import UploadPage from './UploadPage';
 import Landing from './Landing';
+import AppDragDropDemo from './AppDragDropDemo';
+import AppDragDropDemo1 from './AppDragDropDemo1';
+import AppDragDropDemo2 from './AppDragDropDemo2';
 class Login extends Component {
   constructor(props){
     super(props);
@@ -25,7 +27,7 @@ class Login extends Component {
       <MuiThemeProvider key={"theme"}>
         <div>
          <TextField
-           hintText="Enter your College Rollno"
+           hintText="Enter your Student Id"
            floatingLabelText="Student Id"
            onChange={(event,newValue) => this.setState({username:newValue})}
            />
@@ -37,7 +39,8 @@ class Login extends Component {
              onChange = {(event,newValue) => this.setState({password:newValue})}
              />
            <br/>
-           <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+           <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event, this.state.loginRole)}/>
+
        </div>
        </MuiThemeProvider>
     )
@@ -46,20 +49,20 @@ class Login extends Component {
       password:'',
       menuValue:1,
       loginComponent:localloginComponent,
-      loginRole:'student'
+      loginRole:'student1'
     }
   }
   componentWillMount(){
   // console.log("willmount prop values",this.props);
   if(this.props.role != undefined){
-    if(this.props.role == 'student'){
+    if(this.props.role == 'student1'){
       console.log("in student componentWillMount");
       var localloginComponent=[];
       localloginComponent.push(
         <MuiThemeProvider>
           <div>
            <TextField
-             hintText="Enter your College Rollno"
+             hintText="Enter your Student Id"
              floatingLabelText="Student Id"
              onChange = {(event,newValue) => this.setState({username:newValue})}
              />
@@ -71,12 +74,12 @@ class Login extends Component {
                onChange = {(event,newValue) => this.setState({password:newValue})}
                />
              <br/>
-             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event, this.props.role)}/>
          </div>
          </MuiThemeProvider>
       )
-      this.setState({menuValue:1,loginComponent:localloginComponent,loginRole:'student'})
-    }
+      this.setState({menuValue:1,loginComponent:localloginComponent,loginRole:'student1'})
+    } 
     else if(this.props.role == 'teacher'){
       console.log("in teacher componentWillMount");
       var localloginComponent=[];
