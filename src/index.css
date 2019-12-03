@@ -1,18 +1,14 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
-.indexL{
-background-color: darkslategray;
-color: white;
-height: 500px;
-}
-
-.headerL {
+.headerL2 {
   padding: 10px;
   text-align: center;
   background: #02c2cf;
   color: white;
-  font-size: 30px;
+  font-size: 15px;
 }
+
+.indexLend{
+  background-color: rgb(25, 32, 11);
+  color: white;
+  height: 500px;
+  }
+
