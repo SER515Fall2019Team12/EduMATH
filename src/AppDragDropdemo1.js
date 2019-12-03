@@ -160,27 +160,29 @@ export default class AppDragDropDemo extends Component {
         onDrop = (ev, cat) => {
         
         let id = ev.dataTransfer.getData("id");
-        
-        let tasks = this.state.tasks.filter((task) => {
-            if (task.name == id) {
-                if(task.category == "wip") {
-                     this.state.tasks.push({name:task.name,category:"wip", bgcolor: task.bgcolor});
-                     task.category = cat;
+        let category = ev.dataTransfer.getData("category");
+        let pId = ev.dataTransfer.getData("pId");
+            if(category == "wip"){
+                this.state.tasks.push({name:id,category:"complete", bgcolor: 'rgb(69, 109, 241)', pId:this.global});
+                this.global++;
+            }else{
+                console.log("PID----"+pId);
+                var tasksU = this.state.tasks;
+                for(var i=0; i<tasksU.length; i++){
+                    if(tasksU[i].pId == pId){
+                        tasksU.splice(i, 1);
+                    }
                 }
-                else {
-                     this.state.tasks.pop();
-                     task.category = cat;
-                }
-                
+
+                this.state.tasks = tasksU;
             }
-            return task;
-        });
- 
-        this.setState({
-             //...this.state,
-             //tasks
-        });
-       
+            
+                     //task.category = cat;
+           
+         this.setState({
+            // ...this.state,
+             
+         });
      }
         //this function contains render features 
         render() {
