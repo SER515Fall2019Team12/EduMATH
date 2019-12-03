@@ -106,7 +106,7 @@ class Login extends Component {
         <MuiThemeProvider>
           <div>
            <TextField
-             hintText="Enter your College Rollno"
+             hintText="Enter your Teacher id code"
              floatingLabelText="Teacher Id"
              onChange={(event,newValue) => this.setState({username:newValue})}
              />
@@ -118,7 +118,8 @@ class Login extends Component {
                onChange={(event,newValue) => this.setState({password:newValue})}
                />
              <br/>
-             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event, this.props.role)}/>
+
          </div>
          </MuiThemeProvider>
       )
@@ -127,61 +128,78 @@ class Login extends Component {
   }
   }
   handleClick(event){
-    var self = this;
-    var payload={
-      "userid":this.state.username,
-      "password":this.state.password,
-      "role":role
-    }
-    axios.post(apiBaseUrl+'login', payload)
-   .then(function (response) {
-     console.log(response);
-     if(response.data.code == 200){
-       console.log("Login successfull");
-       var uploadScreen=[];
-       uploadScreen.push(<Landing appContext={self.props.appContext} role={self.state.loginRole} name={self.state.username}/>)
-       self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})
-     }
-     else if(response.data.code == 204){
-       console.log("Username password do not match");
-       alert(response.data.success)
-     }
-     else{
-       console.log("Username does not exists");
-       alert("Username does not exist");
-     }
-   })
-   .catch(function (error) {
-     console.log(error);
-   });
-  }
-  handleMenuChange(value){
-    console.log("menuvalue",value);
-    var loginRole;
-    if(value==1){
-      var localloginComponent=[];
-      loginRole='student';
-      localloginComponent.push(
-        <MuiThemeProvider>
-          <div>
-           <TextField
-             hintText="Enter your College Rollno"
-             floatingLabelText="Student Id"
-             onChange = {(event,newValue) => this.setState({username:newValue})}
-             />
-           <br/>
+    handleClick(event, role){
+      var self = this;
+      var payload={
+        "userid":this.state.username,
+        "password":this.state.password
+        "password":this.state.password,
+        "role":role
+      }
+      axios.post(apiBaseUrl+'login', payload)
+     .then(function (response) {
+       console.log(response);
+       if(response.data.code == 200){
+        var uploadScreen=[];
+  
+          if(role === 'teacher'){
+            uploadScreen.push(<AppDragDropDemo2 appContext={self.props.appContext} role={self.state.loginRole} name={self.state.username}/>)
+            self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})
+          } else if(role === 'student6'){
+            uploadScreen.push(<AppDragDropDemo appContext={self.props.appContext} role={self.state.loginRole} name={self.state.username}/>)
+            self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})
+          }else{
+            uploadScreen.push(<AppDragDropDemo1 appContext={self.props.appContext} role={self.state.loginRole} name={self.state.username}/>)
+            self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})
+          }
+  
+         console.log("Login successfull");
+         var uploadScreen=[];
+         uploadScreen.push(<Landing appContext={self.props.appContext} role={self.state.loginRole} name={self.state.username}/>)
+         self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})
+       }
+       else if(response.data.code == 204){
+         console.log("Username password do not match");
+      var loginRole;
+      if(value==1){
+        var localloginComponent=[];
+        loginRole='student';
+        loginRole='student1';
+        localloginComponent.push(
+          <MuiThemeProvider>
+            <div>
              <TextField
-               type="password"
-               hintText="Enter your Password"
-               floatingLabelText="Password"
-               onChange = {(event,newValue) => this.setState({password:newValue})}
+               hintText="Enter your College Rollno"
+               hintText="Enter your Student Id"
+               floatingLabelText="Student Id"
+               onChange = {(event,newValue) => this.setState({username:newValue})}
                />
-             <br/>
-             <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
-         </div>
-         </MuiThemeProvider>
-      )
-    }
+                 onChange = {(event,newValue) => this.setState({password:newValue})}
+                 />
+               <br/>
+               <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+               <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event, loginRole)}/>
+           </div>
+           </MuiThemeProvider>
+        )
+          <MuiThemeProvider>
+            <div>
+             <TextField
+               hintText="Enter your College Rollno"
+               hintText="Enter your Student Id"
+               floatingLabelText="Teacher Id"
+               onChange = {(event,newValue) => this.setState({username:newValue})}
+               />
+                 onChange = {(event,newValue) => this.setState({password:newValue})}
+                 />
+               <br/>
+               <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+               <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event, loginRole)}/>
+           </div>
+           </MuiThemeProvider>
+        )
+      }
+  
     else if(value == 2){
       var localloginComponent=[];
       loginRole='teacher';
