@@ -221,3 +221,43 @@ export default class AppDragDropDemo extends Component {
             outputResult = "Invalid Expression"
         }
     }
+    
+    this.mState.tasks.forEach ((t) => {
+            mTasks.tasks.push(
+                <div key={t.name} 
+                    onDragStart = {(e) => this.onDragStart(e, t.name, t.category, t.pId)}
+                    draggable
+                    className="draggable"
+                    style = {{backgroundColor: t.bgcolor}}
+                >
+                    {t.name}
+                </div>
+            );
+        });
+
+             //Return or display function for rendering function is implemented 
+             return (
+            <div className="container-drag">
+                <h2 className="header">EduMath</h2>
+                <div className="wip"
+                    onDragOver={(e)=>this.onDragOver(e)}
+                    onDrop={(e)=>{this.onDrop(e, "wip")}}>
+               <span className="task-header">Numbers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Operators</span>
+                    {mTasks.tasks}
+                </div>
+             <div className="droppable" 
+                    onDragOver={(e)=>this.onDragOver(e)}
+                    onDrop={(e)=>this.onDrop(e, "complete")}>
+                     <span className="task-header">Sandbox</span>
+                     {tasks.complete}
+                </div>
+            <div className="answer">
+            <span className="task-header">Result</span>
+            <span className="task-header">{outputResult}</span>
+            </div>
+            </div>
+        );
+    }
+        
+   }
